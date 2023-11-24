@@ -13,14 +13,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Cache appearance objects
     let navBarAppearance = createNavBarAppearance()
     let tabBarAppearance = createTabBarAppearance()
-
+    
+   
+    enum ImageAsset: String {
+        case search = "search"
+        case favourites = "favourites"
+        
+        var image: UIImage {
+            return UIImage(named: self.rawValue) ?? UIImage()
+        }
+    }
+    
     /// This method is called when a new scene session is being created.
     /// It prepares the user interface and configures the scene-based state of the app.
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let searchVC = createNavController(for: SearchVC(), with: navBarAppearance)
-        let favoritesVC = createNavController(for: FavoritesListVC(), with: navBarAppearance)
+        let searchIcon = ImageAsset.search.image
+        let favoritesIcon = ImageAsset.favourites.image
+
+        let searchVC = createNavController(for: SearchVC(), title: "Search", icon: searchIcon, with: navBarAppearance)
+        let favoritesVC = createNavController(for: FavoritesListVC(), title: "Favorites", icon: favoritesIcon, with: navBarAppearance)
 
         let tabBar = UITabBarController()
         tabBar.viewControllers = [searchVC, favoritesVC]
@@ -35,13 +48,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-    /// Creates a navigation controller with a given root view controller and configures its appearance.
-    func createNavController(for rootVC: UIViewController, with appearance: UINavigationBarAppearance) -> UINavigationController {
+    func createNavController(for rootVC: UIViewController, title: String, icon: UIImage?, with appearance: UINavigationBarAppearance) -> UINavigationController {
         let navController = UINavigationController(rootViewController: rootVC)
         navController.navigationBar.standardAppearance = appearance
         if #available(iOS 13.0, *) {
             navController.navigationBar.scrollEdgeAppearance = appearance
         }
+        rootVC.title = title
+        navController.tabBarItem = UITabBarItem(title: title, image: icon, tag: 0)
         return navController
     }
 
