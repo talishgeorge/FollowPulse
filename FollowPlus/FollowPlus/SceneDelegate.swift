@@ -13,52 +13,77 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Cache appearance objects
     let navBarAppearance = createNavBarAppearance()
     let tabBarAppearance = createTabBarAppearance()
-    
-   
+
+    // Enum for managing image assets
     enum ImageAsset: String {
-        case search = "search"
-        case favourites = "favourites"
-        
+        // Define cases for each image asset
+        case search
+        case favourites
+        case selectedFavourites
+        case selectedSearch
+
+        // Computed property to get the UIImage instance for each case
         var image: UIImage {
-            return UIImage(named: self.rawValue) ?? UIImage()
+            // Load the image from the asset catalog and set its rendering mode to alwaysOriginal
+            // This ensures the image appears as you've designed it, regardless of the tint color of the tab bar
+            return (UIImage(named: rawValue) ?? UIImage()).withRenderingMode(.alwaysOriginal)
         }
     }
-    
+
     /// This method is called when a new scene session is being created.
     /// It prepares the user interface and configures the scene-based state of the app.
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        let searchIcon = ImageAsset.search.image
-        let favoritesIcon = ImageAsset.favourites.image
-
-        let searchVC = createNavController(for: SearchVC(), title: "Search", icon: searchIcon, with: navBarAppearance)
-        let favoritesVC = createNavController(for: FavoritesListVC(), title: "Favorites", icon: favoritesIcon, with: navBarAppearance)
-
-        let tabBar = UITabBarController()
-        tabBar.viewControllers = [searchVC, favoritesVC]
-        tabBar.tabBar.standardAppearance = tabBarAppearance
-        if #available(iOS 13.0, *) {
-            tabBar.tabBar.scrollEdgeAppearance = tabBarAppearance
-        }
-
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = tabBar
+        window?.rootViewController = setupTabBarController()
         window?.makeKeyAndVisible()
     }
 
-    func createNavController(for rootVC: UIViewController, title: String, icon: UIImage?, with appearance: UINavigationBarAppearance) -> UINavigationController {
+    // Function to setup the tab bar controller
+    func setupTabBarController() -> UITabBarController {
+        // Get the images for the tab bar items
+        let search = ImageAsset.search.image
+        let searchSelectedIcon = ImageAsset.selectedSearch.image
+        let favorites = ImageAsset.favourites.image
+        let favoritesSelectedIcon = ImageAsset.selectedFavourites.image
+
+        // Create the navigation controllers for the tab bar items
+        // Each navigation controller is associated with a root view controller, a title, an icon, a selected icon, a navigation bar appearance, and a tag
+        let searchVC = createNavController(for: SearchVC(), title: "Search", icon: search, selectedIcon: searchSelectedIcon, with: navBarAppearance, tag: 0)
+        let favoritesVC = createNavController(for: FavoritesListVC(), title: "Favorites", icon: favorites, selectedIcon: favoritesSelectedIcon, with: navBarAppearance, tag: 1)
+
+        // Create the tab bar controller and set its view controllers
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [searchVC, favoritesVC]
+        // Set the appearance of the tab bar
+        tabBarController.tabBar.standardAppearance = tabBarAppearance
+        // For iOS 13 and above, also set the scroll edge appearance of the tab bar
+        if #available(iOS 13.0, *) {
+            tabBarController.tabBar.scrollEdgeAppearance = tabBarAppearance
+        }
+
+        return tabBarController
+    }
+    
+    // Function to create a navigation controller for a tab bar item
+    func createNavController(for rootVC: UIViewController, title: String, icon: UIImage?, selectedIcon: UIImage?, with appearance: UINavigationBarAppearance, tag: Int) -> UINavigationController {
+        // Create a navigation controller with the specified root view controller
         let navController = UINavigationController(rootViewController: rootVC)
+        // Set the appearance of the navigation bar
         navController.navigationBar.standardAppearance = appearance
+        // For iOS 13 and above, also set the scroll edge appearance of the navigation bar
         if #available(iOS 13.0, *) {
             navController.navigationBar.scrollEdgeAppearance = appearance
         }
+        // Set the title and tab bar item of the root view controller
         rootVC.title = title
-        navController.tabBarItem = UITabBarItem(title: title, image: icon, tag: 0)
+        let tabBarItem = UITabBarItem(title: title, image: icon, tag: tag)
+        tabBarItem.selectedImage = selectedIcon
+        navController.tabBarItem = tabBarItem
         return navController
     }
-
+    
     /// Creates and configures a UINavigationBarAppearance object.
     static func createNavBarAppearance() -> UINavigationBarAppearance {
         let appearance = UINavigationBarAppearance()
