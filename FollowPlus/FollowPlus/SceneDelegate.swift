@@ -8,17 +8,57 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
+    // Cache appearance objects
+    let navBarAppearance = createNavBarAppearance()
+    let tabBarAppearance = createTabBarAppearance()
 
+    /// This method is called when a new scene session is being created.
+    /// It prepares the user interface and configures the scene-based state of the app.
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    
         guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        let searchVC = createNavController(for: SearchVC(), with: navBarAppearance)
+        let favoritesVC = createNavController(for: FavoritesListVC(), with: navBarAppearance)
+
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [searchVC, favoritesVC]
+        tabBar.tabBar.standardAppearance = tabBarAppearance
+        if #available(iOS 13.0, *) {
+            tabBar.tabBar.scrollEdgeAppearance = tabBarAppearance
+        }
+
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
+    }
+
+    /// Creates a navigation controller with a given root view controller and configures its appearance.
+    func createNavController(for rootVC: UIViewController, with appearance: UINavigationBarAppearance) -> UINavigationController {
+        let navController = UINavigationController(rootViewController: rootVC)
+        navController.navigationBar.standardAppearance = appearance
+        if #available(iOS 13.0, *) {
+            navController.navigationBar.scrollEdgeAppearance = appearance
+        }
+        return navController
+    }
+
+    /// Creates and configures a UINavigationBarAppearance object.
+    static func createNavBarAppearance() -> UINavigationBarAppearance {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemGray
+        return appearance
+    }
+
+    /// Creates and configures a UITabBarAppearance object.
+    static func createTabBarAppearance() -> UITabBarAppearance {
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .systemGray
+        return tabBarAppearance
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,7 +88,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
