@@ -13,8 +13,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Cache appearance objects
     let navBarAppearance = createNavBarAppearance()
     let tabBarAppearance = createTabBarAppearance()
+    /**
+     An enumeration representing different image assets.
 
-    // Enum for managing image assets
+     Each case represents a specific image asset and provides a computed property to get the corresponding UIImage instance.
+
+     - Case `search`: Represents the search image asset.
+     - Case `favourites`: Represents the favourites image asset.
+     - Case `selectedFavourites`: Represents the selected favourites image asset.
+     - Case `selectedSearch`: Represents the selected search image asset.
+
+     The computed property `image` returns the UIImage instance for each case. The image is loaded from the asset catalog and its rendering mode is set to alwaysOriginal to ensure it appears as designed, regardless of the tint color of the tab bar.
+     */
     enum ImageAsset: String {
         // Define cases for each image asset
         case search
@@ -40,25 +50,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-    // Function to setup the tab bar controller
+    /**
+     Creates and returns a UITabBarController with two view controllers: SearchVC and FavoritesListVC.
+     
+     - Returns: A UITabBarController instance.
+     */
     func setupTabBarController() -> UITabBarController {
         // Get the images for the tab bar items
         let search = ImageAsset.search.image
         let searchSelectedIcon = ImageAsset.selectedSearch.image
         let favorites = ImageAsset.favourites.image
         let favoritesSelectedIcon = ImageAsset.selectedFavourites.image
-
-        // Create the navigation controllers for the tab bar items
-        // Each navigation controller is associated with a root view controller, a title, an icon, a selected icon, a navigation bar appearance, and a tag
-        let searchVC = createNavController(for: SearchVC(), title: "Search", icon: search, selectedIcon: searchSelectedIcon, with: navBarAppearance, tag: 0)
-        let favoritesVC = createNavController(for: FavoritesListVC(), title: "Favorites", icon: favorites, selectedIcon: favoritesSelectedIcon, with: navBarAppearance, tag: 1)
+        let defaultAppearance = UINavigationBarAppearance()
+        let searchVC = createNavController(for: SearchVC(), title: "Search", icon: search, selectedIcon: searchSelectedIcon, with: navBarAppearance ?? defaultAppearance, tag: 0)
+        let favoritesVC = createNavController(for: FavoritesListVC(), title: "Favorites", icon: favorites, selectedIcon: favoritesSelectedIcon, with: navBarAppearance ?? defaultAppearance, tag: 1)
 
         // Create the tab bar controller and set its view controllers
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [searchVC, favoritesVC]
         // Set the appearance of the tab bar
         tabBarController.tabBar.standardAppearance = tabBarAppearance
-        // For iOS 13 and above, also set the scroll edge appearance of the tab bar
+        // For iOS 13 and above, also set the scroll edge appearance of the tab barni
         if #available(iOS 13.0, *) {
             tabBarController.tabBar.scrollEdgeAppearance = tabBarAppearance
         }
@@ -66,7 +78,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return tabBarController
     }
     
-    // Function to create a navigation controller for a tab bar item
+    /**
+     Creates a navigation controller with the specified root view controller, appearance, and tab bar item properties.
+
+     - Parameters:
+        - rootVC: The root view controller for the navigation controller.
+        - title: The title for the root view controller and tab bar item.
+        - icon: The image for the tab bar item.
+        - selectedIcon: The selected image for the tab bar item.
+        - appearance: The appearance of the navigation bar.
+        - tag: The tag value for the tab bar item.
+
+     - Returns: A newly created navigation controller.
+     */
     func createNavController(for rootVC: UIViewController, title: String, icon: UIImage?, selectedIcon: UIImage?, with appearance: UINavigationBarAppearance, tag: Int) -> UINavigationController {
         // Create a navigation controller with the specified root view controller
         let navController = UINavigationController(rootViewController: rootVC)
@@ -84,15 +108,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return navController
     }
     
-    /// Creates and configures a UINavigationBarAppearance object.
-    static func createNavBarAppearance() -> UINavigationBarAppearance {
+    /// Creates a customized navigation bar appearance.
+    /// - Returns: The customized UINavigationBarAppearance object.
+    static func createNavBarAppearance() -> UINavigationBarAppearance? {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .systemGray
         return appearance
     }
 
-    /// Creates and configures a UITabBarAppearance object.
+    /// Creates a customized appearance for the tab bar.
+    /// - Returns: A `UITabBarAppearance` object with the customized appearance.
     static func createTabBarAppearance() -> UITabBarAppearance {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
@@ -128,3 +154,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 }
+
