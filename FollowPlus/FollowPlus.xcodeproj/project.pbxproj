@@ -13,6 +13,12 @@
 		8328970D2B108124004F523A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8328970B2B108124004F523A /* LaunchScreen.storyboard */; };
 		832897172B109193004F523A /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832897162B109193004F523A /* SearchVC.swift */; };
 		832897192B1091EF004F523A /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832897182B1091EF004F523A /* FavoritesListVC.swift */; };
+		837D94622B1AE4A900DAAFA1 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D94612B1AE4A900DAAFA1 /* Follower.swift */; };
+		837D94642B1AE54000DAAFA1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D94632B1AE54000DAAFA1 /* User.swift */; };
+		837D94662B1AE73E00DAAFA1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D94652B1AE73E00DAAFA1 /* NetworkManager.swift */; };
+		837D946C2B1B43D000DAAFA1 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D946B2B1B43D000DAAFA1 /* FollowerCell.swift */; };
+		837D946E2B1B448300DAAFA1 /* FPAvatraImageIvew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D946D2B1B448300DAAFA1 /* FPAvatraImageIvew.swift */; };
+		837D94702B1B466700DAAFA1 /* FPTitleLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D946F2B1B466600DAAFA1 /* FPTitleLable.swift */; };
 		83A3B3002B1352FE00990628 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B2FF2B1352FE00990628 /* FPButton.swift */; };
 		83A3B3022B13572400990628 /* FPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3012B13572400990628 /* FPTextField.swift */; };
 		83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3032B144FDF00990628 /* FollowersListVC.swift */; };
@@ -27,6 +33,12 @@
 		8328970E2B108124004F523A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832897162B109193004F523A /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		832897182B1091EF004F523A /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
+		837D94612B1AE4A900DAAFA1 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		837D94632B1AE54000DAAFA1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		837D94652B1AE73E00DAAFA1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		837D946B2B1B43D000DAAFA1 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
+		837D946D2B1B448300DAAFA1 /* FPAvatraImageIvew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPAvatraImageIvew.swift; sourceTree = "<group>"; };
+		837D946F2B1B466600DAAFA1 /* FPTitleLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPTitleLable.swift; sourceTree = "<group>"; };
 		83A3B2FF2B1352FE00990628 /* FPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPButton.swift; sourceTree = "<group>"; };
 		83A3B3012B13572400990628 /* FPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPTextField.swift; sourceTree = "<group>"; };
 		83A3B3032B144FDF00990628 /* FollowersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVC.swift; sourceTree = "<group>"; };
@@ -62,6 +74,7 @@
 		832896FF2B10811B004F523A /* FollowPlus */ = {
 			isa = PBXGroup;
 			children = (
+				837D94672B1B436B00DAAFA1 /* CustomViews */,
 				832897002B10811B004F523A /* AppDelegate.swift */,
 				832897092B108124004F523A /* Assets.xcassets */,
 				832897182B1091EF004F523A /* FavoritesListVC.swift */,
@@ -72,8 +85,29 @@
 				8328970B2B108124004F523A /* LaunchScreen.storyboard */,
 				832897022B10811B004F523A /* SceneDelegate.swift */,
 				832897162B109193004F523A /* SearchVC.swift */,
+				837D94652B1AE73E00DAAFA1 /* NetworkManager.swift */,
+				837D94612B1AE4A900DAAFA1 /* Follower.swift */,
+				837D94632B1AE54000DAAFA1 /* User.swift */,
 			);
 			path = FollowPlus;
+			sourceTree = "<group>";
+		};
+		837D94672B1B436B00DAAFA1 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				837D94682B1B438800DAAFA1 /* Cells */,
+				837D946D2B1B448300DAAFA1 /* FPAvatraImageIvew.swift */,
+				837D946F2B1B466600DAAFA1 /* FPTitleLable.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		837D94682B1B438800DAAFA1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				837D946B2B1B43D000DAAFA1 /* FollowerCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,8 +182,14 @@
 			files = (
 				832897172B109193004F523A /* SearchVC.swift in Sources */,
 				83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */,
+				837D94662B1AE73E00DAAFA1 /* NetworkManager.swift in Sources */,
 				832897192B1091EF004F523A /* FavoritesListVC.swift in Sources */,
+				837D94622B1AE4A900DAAFA1 /* Follower.swift in Sources */,
+				837D946E2B1B448300DAAFA1 /* FPAvatraImageIvew.swift in Sources */,
 				83A3B3002B1352FE00990628 /* FPButton.swift in Sources */,
+				837D946C2B1B43D000DAAFA1 /* FollowerCell.swift in Sources */,
+				837D94642B1AE54000DAAFA1 /* User.swift in Sources */,
+				837D94702B1B466700DAAFA1 /* FPTitleLable.swift in Sources */,
 				83A3B3022B13572400990628 /* FPTextField.swift in Sources */,
 				832897012B10811B004F523A /* AppDelegate.swift in Sources */,
 				832897032B10811B004F523A /* SceneDelegate.swift in Sources */,

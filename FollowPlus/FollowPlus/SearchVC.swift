@@ -24,15 +24,13 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
-//        self.title = "Search"
         configureUI()
     }
 
     @objc private func pushFollolwerList() {
         let follolwerListVC = FollowersListVC()
-        follolwerListVC.userName = userNameTextField.text ?? "Talish"
-        follolwerListVC.title = userNameTextField.text ?? "Talish"
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        follolwerListVC.userName = userNameTextField.text ?? "octocat"
+        follolwerListVC.title = userNameTextField.text ?? "octocat"
         navigationController?.pushViewController(follolwerListVC, animated: true)
     }
 
@@ -107,7 +105,7 @@ class SearchVC: UIViewController {
 
         if subview is UITextField {
             userNameTextField.delegate = self
-            userNameTextField.text = "Talish"
+            userNameTextField.text = "octocat"
         }
 
         NSLayoutConstraint.activate([
