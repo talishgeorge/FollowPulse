@@ -8,8 +8,8 @@
 import UIKit
 
 class FPAvatraImageIvew: UIImageView {
+    //let placeholderImage = #imageLiteral(resourceName: "avatar-paceholder")
     let placeholderImage = #imageLiteral(resourceName: "avatar-paceholder")
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
