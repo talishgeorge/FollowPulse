@@ -15,6 +15,7 @@
 		832897192B1091EF004F523A /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832897182B1091EF004F523A /* FavoritesListVC.swift */; };
 		83A3B3002B1352FE00990628 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B2FF2B1352FE00990628 /* FPButton.swift */; };
 		83A3B3022B13572400990628 /* FPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3012B13572400990628 /* FPTextField.swift */; };
+		83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3032B144FDF00990628 /* FollowersListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		832897182B1091EF004F523A /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		83A3B2FF2B1352FE00990628 /* FPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPButton.swift; sourceTree = "<group>"; };
 		83A3B3012B13572400990628 /* FPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPTextField.swift; sourceTree = "<group>"; };
+		83A3B3032B144FDF00990628 /* FollowersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				832897002B10811B004F523A /* AppDelegate.swift */,
-				832897022B10811B004F523A /* SceneDelegate.swift */,
+				832897092B108124004F523A /* Assets.xcassets */,
+				832897182B1091EF004F523A /* FavoritesListVC.swift */,
+				83A3B3032B144FDF00990628 /* FollowersListVC.swift */,
 				83A3B2FF2B1352FE00990628 /* FPButton.swift */,
 				83A3B3012B13572400990628 /* FPTextField.swift */,
-				832897092B108124004F523A /* Assets.xcassets */,
-				8328970B2B108124004F523A /* LaunchScreen.storyboard */,
 				8328970E2B108124004F523A /* Info.plist */,
+				8328970B2B108124004F523A /* LaunchScreen.storyboard */,
+				832897022B10811B004F523A /* SceneDelegate.swift */,
 				832897162B109193004F523A /* SearchVC.swift */,
-				832897182B1091EF004F523A /* FavoritesListVC.swift */,
 			);
 			path = FollowPlus;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				832897172B109193004F523A /* SearchVC.swift in Sources */,
+				83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */,
 				832897192B1091EF004F523A /* FavoritesListVC.swift in Sources */,
 				83A3B3002B1352FE00990628 /* FPButton.swift in Sources */,
 				83A3B3022B13572400990628 /* FPTextField.swift in Sources */,

@@ -113,7 +113,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     static func createNavBarAppearance() -> UINavigationBarAppearance? {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemGray
+        appearance.backgroundColor = .systemGray6
+        UINavigationBar.appearance().tintColor = .systemGreen
         return appearance
     }
 
@@ -122,7 +123,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     static func createTabBarAppearance() -> UITabBarAppearance {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = .systemGray
+        tabBarAppearance.backgroundColor = .systemGray6
         return tabBarAppearance
     }
 
