@@ -5,8 +5,8 @@
 //  Created by Talish George on 27/11/2023.
 //
 /*
-
-*/
+ 
+ */
 import UIKit
 
 /// A view controller that displays a list of followers.
@@ -78,24 +78,33 @@ class FollowersListVC: UIViewController {
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         return flowLayout
     }
-
+    
     /// Retrieves the followers from the network.
     func getFollowers(userName: String, page: Int) {
         
         showLoadingView()
         NetworkManager.shared.getFollower(for: userName, page: page) { [weak self] result in
-            
+            guard let self = self else { return }
             switch result {
             case let .success(followers):
                 if followers.count < 100 {
-                    self?.hasMoreFollowers = false
+                    self.hasMoreFollowers = false
                 }
-                self?.followers.append(contentsOf: followers)
-                self?.updateData()
-                self?.dismissLoadingView()
+                self.followers.append(contentsOf: followers)
+                
+                if self.followers.isEmpty {
+                    let message = "No followers!"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                    return
+                }
+                
+                self.updateData()
+                self.dismissLoadingView()
             case let .failure(error):
                 print(error)
-                self?.presentFPAlertOnMainThread(title: "Parsing Error", message: error.rawValue, buttonTitle: "Ok")
+                self.presentFPAlertOnMainThread(title: "Parsing Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
@@ -118,7 +127,7 @@ class FollowersListVC: UIViewController {
             self.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 150) // Set a constant height
     }
@@ -133,7 +142,6 @@ extension FollowersListVC: UICollectionViewDelegate {
         
         if offsetY > contentHeight - height {
             guard hasMoreFollowers else { return }
-            
             page += 1
             getFollowers(userName: userName, page: page)
         }
