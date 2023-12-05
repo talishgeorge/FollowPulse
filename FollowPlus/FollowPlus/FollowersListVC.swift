@@ -78,28 +78,21 @@ class FollowersListVC: UIViewController {
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         return flowLayout
     }
-    
-    // //Add a custom alert to show the error message
-    func presentFPAlertOnMainThread(title: String, message: String, buttonTitle: String) {   
-        DispatchQueue.main.async {
-            let alertVC = FPAlertVC(title: title, message: message, buttonTitle: buttonTitle)
-            alertVC.modalPresentationStyle = .overFullScreen
-            alertVC.modalTransitionStyle = .crossDissolve
-            self.present(alertVC, animated: true)
-        }   
-    }
 
     /// Retrieves the followers from the network.
     func getFollowers(userName: String, page: Int) {
+        
+        showLoadingView()
         NetworkManager.shared.getFollower(for: userName, page: page) { [weak self] result in
+            
             switch result {
             case let .success(followers):
                 if followers.count < 100 {
                     self?.hasMoreFollowers = false
                 }
-                
                 self?.followers.append(contentsOf: followers)
                 self?.updateData()
+                self?.dismissLoadingView()
             case let .failure(error):
                 print(error)
                 self?.presentFPAlertOnMainThread(title: "Parsing Error", message: error.rawValue, buttonTitle: "Ok")

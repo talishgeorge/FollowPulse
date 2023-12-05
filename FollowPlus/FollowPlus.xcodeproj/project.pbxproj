@@ -23,6 +23,7 @@
 		83A3B3022B13572400990628 /* FPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3012B13572400990628 /* FPTextField.swift */; };
 		83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3032B144FDF00990628 /* FollowersListVC.swift */; };
 		83A4C7022B1EEF740006D862 /* FPAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C7012B1EEF740006D862 /* FPAlertView.swift */; };
+		83A4C7052B1F34E20006D862 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C7042B1F34E20006D862 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		83A3B3012B13572400990628 /* FPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPTextField.swift; sourceTree = "<group>"; };
 		83A3B3032B144FDF00990628 /* FollowersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVC.swift; sourceTree = "<group>"; };
 		83A4C7012B1EEF740006D862 /* FPAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPAlertView.swift; sourceTree = "<group>"; };
+		83A4C7042B1F34E20006D862 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		832896FF2B10811B004F523A /* FollowPlus */ = {
 			isa = PBXGroup;
 			children = (
+				83A4C7032B1F34390006D862 /* Extensions */,
 				837D94672B1B436B00DAAFA1 /* CustomViews */,
 				832897002B10811B004F523A /* AppDelegate.swift */,
 				832897092B108124004F523A /* Assets.xcassets */,
@@ -111,6 +114,14 @@
 				837D946B2B1B43D000DAAFA1 /* FollowerCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		83A4C7032B1F34390006D862 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				83A4C7042B1F34E20006D862 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 			files = (
 				832897172B109193004F523A /* SearchVC.swift in Sources */,
 				83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */,
+				83A4C7052B1F34E20006D862 /* UIViewController+Ext.swift in Sources */,
 				837D94662B1AE73E00DAAFA1 /* NetworkManager.swift in Sources */,
 				832897192B1091EF004F523A /* FavoritesListVC.swift in Sources */,
 				837D94622B1AE4A900DAAFA1 /* Follower.swift in Sources */,
