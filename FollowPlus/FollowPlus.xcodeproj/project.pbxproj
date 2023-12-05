@@ -22,6 +22,7 @@
 		83A3B3002B1352FE00990628 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B2FF2B1352FE00990628 /* FPButton.swift */; };
 		83A3B3022B13572400990628 /* FPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3012B13572400990628 /* FPTextField.swift */; };
 		83A3B3042B144FDF00990628 /* FollowersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A3B3032B144FDF00990628 /* FollowersListVC.swift */; };
+		83A4C7022B1EEF740006D862 /* FPAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4C7012B1EEF740006D862 /* FPAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		83A3B2FF2B1352FE00990628 /* FPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPButton.swift; sourceTree = "<group>"; };
 		83A3B3012B13572400990628 /* FPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPTextField.swift; sourceTree = "<group>"; };
 		83A3B3032B144FDF00990628 /* FollowersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVC.swift; sourceTree = "<group>"; };
+		83A4C7012B1EEF740006D862 /* FPAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				837D94682B1B438800DAAFA1 /* Cells */,
 				837D946D2B1B448300DAAFA1 /* FPAvatraImageIvew.swift */,
 				837D946F2B1B466600DAAFA1 /* FPTitleLable.swift */,
+				83A4C7012B1EEF740006D862 /* FPAlertView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				837D94642B1AE54000DAAFA1 /* User.swift in Sources */,
 				837D94702B1B466700DAAFA1 /* FPTitleLable.swift in Sources */,
 				83A3B3022B13572400990628 /* FPTextField.swift in Sources */,
+				83A4C7022B1EEF740006D862 /* FPAlertView.swift in Sources */,
 				832897012B10811B004F523A /* AppDelegate.swift in Sources */,
 				832897032B10811B004F523A /* SceneDelegate.swift in Sources */,
 			);
