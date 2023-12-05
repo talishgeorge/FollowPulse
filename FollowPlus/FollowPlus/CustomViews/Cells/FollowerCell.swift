@@ -36,6 +36,7 @@ class FollowerCell: UICollectionViewCell {
 
     func set(follower: Follower) {
         userNameLabel.text = follower.login
+        avatraImageView.downloadImage(from: follower.avatarUrl ?? "avatar-paceholder")
     }
 
     /// <#Description#>

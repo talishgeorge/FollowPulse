@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 enum NetworkError: String, Error {
     case invalidData = "The data received from the server was invalid."
     case decodingError = "There was an issue with the coding keys."
@@ -16,7 +18,8 @@ enum NetworkError: String, Error {
 class NetworkManager {
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com/users/"
-
+    let cache = NSCache<NSString, UIImage>()
+    
     private init() {
     }
 
